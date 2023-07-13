@@ -26,7 +26,7 @@ def import_file(fonte,tipo_arquivo, uf, ano_mes):
 
     url = f"ftp://ftp.datasus.gov.br/dissemin/publicos/{fonte}/200801_/Dados/{tipo_arquivo}{uf}{ano_mes}.dbc"
     file_name = f"{uf}_{ano_mes}.dbc"
-    folder_name = f"/dbfs/mnt/datalake/liga_unesp/raw/{fonte}/{tipo_arquivo}/dbc/"
+    folder_name = f"/home/chic/repos/data_sus_tik/fct-unesp-datasus/landing/{fonte}/{tipo_arquivo}"
 
     try:
         urllib.request.urlretrieve(url, f"{folder_name}{file_name}")
@@ -50,7 +50,7 @@ def import_file_ufs(fonte, tipo_arquivo, ufs, dates):
 # COMMAND ----------
 
 date_start = "2021-06-01"
-date_stop = "2022-09-01"
+date_stop = "2021-08-01"
 
 fonte = "SIHSUS"
 tipo_arquivo = "RD"
