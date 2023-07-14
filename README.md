@@ -1,15 +1,19 @@
+# Remake by TinKlo
+
+This is a sample project for data engineering exercises inpired by the [Teo_me_why](https://www.twitch.tv/teomewhy) channel.
 
 
+The project consist on extract public data from [data sus source](https://datasus.gov.br/).
 
-Remake by TinKlo
+Ingestion > conversion > upload > orquestration > modelling > vizualization
 
+This should be the steps for the project.
 
-
-
-
-
-----------------------------------------------------------
-
+A archtecture should be shown here with the tools specs.
+---
+***
+------------------------------------------------
+This is old README from where this project was inspired
 
 # fct-unesp-datasus
 Repositório destinato aos codigos de ingestáo e analise da dados do datasus

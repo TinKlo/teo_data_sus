@@ -45,7 +45,7 @@ def import_file_ufs(fonte, tipo_arquivo, ufs, dates):
 
 # COMMAND ----------
 
-date_start = "2021-06-01"
+date_start = "2016-01-01"
 date_stop = "2021-08-01"
 
 fonte = "SIHSUS"
