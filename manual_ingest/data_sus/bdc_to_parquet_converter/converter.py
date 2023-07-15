@@ -2,7 +2,16 @@ import os
 import pandas as pd
 from dbc_reader import DbcReader
 
-folder_path = '/home/chic/repos/data_sus_tik/fct-unesp-datasus/landing/SIHSUS'
+folder_path = '/mnt/ssd/datasus/temp/SIHSUS'
+
+# Iterate through each file in the folder
+file_count = 0
+for file_name in os.listdir(folder_path):
+    if file_name.endswith('.dbc'):
+        file_count += 1
+
+# Print the number of files to be processed
+print(f"There are {file_count} files to be processed")
 
 # Iterate through each file in the folder
 for file_name in os.listdir(folder_path):

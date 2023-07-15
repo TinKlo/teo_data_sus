@@ -1,8 +1,11 @@
 import os
 import pandas as pd
 from dbc_reader import DbcReader
+from tqdm import tqdm
 from multiprocessing import Pool
 from itertools import islice
+import time
+import psutil
 
 def process_chunk(chunk, file_path):
     # Convert the chunk to a DataFrame
@@ -26,11 +29,22 @@ def process_file(file_name):
         chunk_size = 10000  # Adjust the chunk size as per your memory constraints
         
         # Process the file in chunks
-        for chunk in iter(lambda: list(islice(reader, chunk_size)), []):
+        start_time = time.time()
+        for chunk in tqdm(iter(lambda: list(islice(reader, chunk_size)), [])):
             process_chunk(chunk, file_path)
+        end_time = time.time()
+        
+        # Get the memory usage
+        process = psutil.Process()
+        memory_usage = process.memory_info().rss / (1024 ** 2)
+        
+        # Print the timing, data ingested, and RAM usage
+        print(f"File '{file_name}' processed in {end_time - start_time} seconds")
+        print(f"{len(chunk)} rows ingested")
+        print(f"{memory_usage} MB of RAM used")
 
 if __name__ == '__main__':
-    folder_path = '/home/chic/repos/data_sus_tik/fct-unesp-datasus/landing/SIHSUS'
+    folder_path = '/mnt/ssd/datasus/temp/SIHSUS/'
     
     # Get the list of file names in the folder
     file_names = os.listdir(folder_path)
